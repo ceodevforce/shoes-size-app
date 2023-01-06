@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum Role {
+  USER
+  ADMIN
+}
+  
+
+model Shoes {
+  id String @id @default(uuid())
+  title String
+  productNumber String
+  details String
+  size Float[]
+  color String[]
+  price String
+  tag String @unique
+  rating Float
+}
+
+model Account {
+    id String @id @default(uuid())
+    userId String
+    type String
+    provider String
+    providerAccountId String
+    refresh_token String?
+    access_token String?
+    expires_at Int?
+    token_type String
+    scope String?
+    id_token String
+    session_state String?
+    role Role @default(USER)
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    @@unique([provider, providerAccountId])
+}
+
+model Session {
+    id String @id @default(uuid())
+    sessionToken String @unique
+    userId String
+    expires DateTime
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  emailVerified DateTime?
+  firstname String
+  lastname String
+  zip Int
+  address String
+  mobile String
+  password String
+  image String?
+  accounts Account[]
+  sessions Session[]
+}
+
+
+model VerificationToken {
+    id Int @id @default(autoincrement())
+    identifier String
+    token String @unique
+    expires DateTime
+
+    @@unique([identifier, token])
+}
