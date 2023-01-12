@@ -7,7 +7,7 @@ export const useUserStore = defineStore('user', () => {
     const userObj = ref(null)
     const userMobile = ref(null)
     const rewards = ref([])
-    const cart = ref([])
+    
     const points = ref(null)
 
 
@@ -21,10 +21,7 @@ export const useUserStore = defineStore('user', () => {
 
     const getRewards = computed(() => rewards)
 
-    const getCart = computed(() => {
-        return cart 
-    })
-
+   
 
     // Actions
 
@@ -41,17 +38,7 @@ export const useUserStore = defineStore('user', () => {
 
     }
     
-    const addToCart = (item) => {
-        cart.push(item)
-    }
-
-    const calculateCartTotal = () => {
-        const price = getCart
-        const total = price.reduce((accu, value) => {
-            return accu + value
-        },0)
-
-    }
+   
 
     const calculateRewards = (points, amountOfMoney) => {
         const { provider } = userObj.app_metadata
@@ -70,15 +57,11 @@ export const useUserStore = defineStore('user', () => {
         userObj,
         userMobile,
         rewards,
-        cart,
         getUser,
         getUserMobile,
         getRewards,
-        getCart,
-        addToCart,
         userObjectFunction,
         calculateRewards,
-        calculateCartTotal
     }
 })
 

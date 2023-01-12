@@ -1,14 +1,15 @@
 <script setup>
 import { useUserStore } from "~/store/users";
 import { useShoeStore } from "~/store/shoes";
+import { useCartStore } from "~~/store/cart";
 
 const client = useSupabaseAuthClient();
 const store = useShoeStore();
 const storeUser = useUserStore()
+const storeCart = useCartStore();
 
 const { shoesFromData } = store.initialShoesData;
-const { cart, getCart } = storeUser
-
+const { cart, getCart } = storeCart
 const filteredShoes = shoesFromData.filter((shoe) => {
   console.log(shoe);
   if (shoe.tag !== "Mens") {
@@ -19,12 +20,16 @@ const filteredShoes = shoesFromData.filter((shoe) => {
 
 const addToCart = (item) => {
   cart.push(item)
-  console.log(getCart)
 }
 
-watch(
-  ()=> getCart
-)
+
+useHead({
+    title: "Mens Section" 
+})
+
+definePageMeta({
+
+})
 </script>
 <template>
   <main>
@@ -44,12 +49,12 @@ watch(
       <div
         class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow dark:bg-gray-900"
       >
-        <a
-          href="#"
+        <NuxtLink
+          to="/mens/{{ shoe.title }}"
           class="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl"
         >
           {{ shoe.title }}
-        </a>
+        </NuxtLink>
 
         <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
           {{ shoe.details }}
@@ -57,10 +62,15 @@ watch(
 
         <p class="mt-3 text-sm text-blue-500">Rating: {{ shoe.rating }}</p>
          <div class="flex">
-        <button @click="addToCart(shoe.price)" class="px-6 py-2 font-medium text-white tracking-wide bg-black rounded-xl">Add to Cart</button>
+        <button @click.prevent="addToCart(shoe)" class="px-6 py-2 font-medium text-white tracking-wide bg-black rounded-xl">Add to Cart</button>
       </div>
       </div>
      
     </div>
+    <section>
+      <br/>
+      <div>Child</div>
+      <NuxtPage/>
+    </section>
   </main>
 </template>
