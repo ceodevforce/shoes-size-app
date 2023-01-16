@@ -26,6 +26,9 @@ export const useCartStore = defineStore('cart', () => {
          return cart.value.length
      })
     
+    const getSelectedColor = computed(() => selectedColor)
+
+    const getSelectedSize = computed(() => selectedSize)
     
     // Action
      const addToCart = (item) => {

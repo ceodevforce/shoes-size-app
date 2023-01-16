@@ -4,12 +4,15 @@ import { useShoeStore } from "~/store/shoes";
 import { useCartStore } from "~~/store/cart";
 
 const client = useSupabaseAuthClient();
+
+
 const store = useShoeStore();
 const storeUser = useUserStore()
 const storeCart = useCartStore();
 
 const { shoesFromData } = store.initialShoesData;
 const { cart, getCart } = storeCart
+
 const filteredShoes = shoesFromData.filter((shoe) => {
   console.log(shoe);
   if (shoe.tag !== "Mens") {
@@ -30,6 +33,8 @@ useHead({
 definePageMeta({
 
 })
+
+
 </script>
 <template>
   <main>
@@ -50,7 +55,7 @@ definePageMeta({
         class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow dark:bg-gray-900"
       >
         <NuxtLink
-          to="/mens/{{ shoe.title }}"
+          :to="`/mens/${shoe.title}`"
           class="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl"
         >
           {{ shoe.title }}
