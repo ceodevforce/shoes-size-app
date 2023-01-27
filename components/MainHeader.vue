@@ -34,12 +34,12 @@ watchEffect(() => {
   <div>
     <nav
       x-data="{ isOpen: false }"
-      class="container p-6 mx-auto lg:flex lg:justify-between lg:items-center"
+      class="container p-6 mx-auto bg-black lg:flex lg:justify-between lg:items-center"
     >
       <div class="flex items-center justify-between">
         <div>
           <NuxtLink
-            class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+            class="text-2xl font-bold text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
             to="/"
             >ShoeIGA</NuxtLink
           >
@@ -50,7 +50,7 @@ watchEffect(() => {
           <button
             @click="isOpen = !isOpen"
             type="button"
-            class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+            class="text-gray-500 dark:text-white hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
             aria-label="toggle menu"
           >
             <svg
@@ -100,35 +100,35 @@ watchEffect(() => {
           class="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:-px-8 lg:space-y-0"
         >
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="/mens"
             >Men's</NuxtLink
           >
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="womens"
             >Women's</NuxtLink
           >
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="kids"
             >Kids
             <Icon name="material-symbols:desktop-windows" />
           </NuxtLink>
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="brands"
             >Brands
             <Icon icon="carbon:calculator" />
           </NuxtLink>
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="new-arrivals"
             >New Arrivals</NuxtLink
           >
 
           <NuxtLink
-            class="text-gray-700 transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+            class="text-white transition-colors duration-300 transform lg:mx-8 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
             to="/account/checkout"
           >
             <Icon name="material-symbols:garden-cart" />

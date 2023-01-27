@@ -1,6 +1,7 @@
 import { prisma } from '../db/'
 import type { Shoes, ShoeType } from '~/types/types'
 export default defineEventHandler(async (event) => {
+
     
     // Get all shoes from prisma
     const shoesFromData = await prisma.shoes.findMany()

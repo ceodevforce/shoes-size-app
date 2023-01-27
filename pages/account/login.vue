@@ -82,6 +82,10 @@ const login = async () => {
   }
 };
 
+
+//FIXME: Check the cb in watch
+
+//TODO: - Add watchEffect instead since watch will stop working after load
 watch(
   () => user 
 )

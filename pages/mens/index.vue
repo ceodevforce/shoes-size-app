@@ -5,13 +5,16 @@ import { useCartStore } from "~~/store/cart";
 
 const client = useSupabaseAuthClient();
 
-
 const store = useShoeStore();
-const storeUser = useUserStore()
+const storeUser = useUserStore();
 const storeCart = useCartStore();
 
 const { shoesFromData } = store.initialShoesData;
-const { cart, getCart } = storeCart
+
+const { selectedSize, selectedColor, getSelectedColor, getSelectedSize } =
+  store;
+
+const { cart, getCart } = storeCart;
 
 const filteredShoes = shoesFromData.filter((shoe) => {
   console.log(shoe);
@@ -22,18 +25,24 @@ const filteredShoes = shoesFromData.filter((shoe) => {
 });
 
 const addToCart = (item) => {
-  cart.push(item)
-}
+  const shoeObject = {
+    ...item,
+    item
+  }
+  cart.push(shoeObject);
+};
+
 
 
 useHead({
-    title: "Mens Section" 
-})
+  title: "Mens Section",
+});
 
-definePageMeta({
+definePageMeta({});
 
-})
-
+// watchEffect(() => {
+//   cart
+// })
 
 </script>
 <template>
@@ -66,16 +75,31 @@ definePageMeta({
         </p>
 
         <p class="mt-3 text-sm text-blue-500">Rating: {{ shoe.rating }}</p>
-         <div class="flex">
-        <button @click.prevent="addToCart(shoe)" class="px-6 py-2 font-medium text-white tracking-wide bg-black rounded-xl">Add to Cart</button>
+        <div class="flex">
+          <p @click="addToCart(color)" class="mt-4 py-6" v-for="color in shoe.color" :key="color">
+            {{ color }}
+          </p>
+          
+        </div>
+        <div class="flex">
+          <div class="mt-6 mx-auto " v-for="size in shoe.size" :key="size">
+            <p @click="addToCart(size)">{{ size }}</p>
+          </div>
+        </div>
+        <div class="flex">
+          <button
+            @click.prevent="addToCart(shoe)"
+            class="px-6 py-2 font-medium text-white tracking-wide bg-black rounded-xl"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
-      </div>
-     
     </div>
     <section>
-      <br/>
+      <br />
       <div>Child</div>
-      <NuxtPage/>
+      <NuxtPage />
     </section>
   </main>
 </template>

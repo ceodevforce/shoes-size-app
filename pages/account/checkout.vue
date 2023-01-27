@@ -1,10 +1,14 @@
 <script setup>
 //TODO: Add cart items to checkout
 import { useCartStore } from "~/store/cart";
+import { useRewardStore } from "~/store/rewards";
 
 const store = useCartStore();
+const rewardStore = useRewardStore(); 
 
 const { cart, price, getCart, getCartAmount, calculateCartTotal } = store;
+
+const { rewardPoints } = rewardStore;
 
 definePageMeta({
     middleware: [
