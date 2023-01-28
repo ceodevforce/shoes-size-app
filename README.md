@@ -1,42 +1,13 @@
-# Nuxt 3 Minimal Starter
+# ShoeIGA 
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a demo project built using Next 3 (stable) this application is proof of concept. The following technologies were used in the building of this application. 
+- [Nuxt](https://nuxt.com)
+- [Pinia](https://pinia.vuejs.org)
+- [Supabase](https://supabase.com)
+- Prisma
 
-## Setup
+<img src="images/nuxt-main.png"/>
 
-Make sure to install the dependencies:
+## Main 
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+<img src="images/shoes1.png" />
