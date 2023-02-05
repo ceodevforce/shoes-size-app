@@ -11,9 +11,6 @@ export const useRewardStore = defineStore('rewards', () => {
     const purchaseWithCash = ref(false)
     const purchaseWithCard = ref(false)
     const purchaseWithPoints = ref(false)
-
-
-
     
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
@@ -22,7 +19,6 @@ export const useRewardStore = defineStore('rewards', () => {
     const getPurchaseWithCard = computed(() => purchaseWithCard)
     const getPurchaseWithCash = computed(() => purchaseWithCash) //
     const getPurchaseWithPoints = computed(() => purchaseWithPoints)
-
 
     /* -------------------------------------------------------------------------- */
     /*                                   Action                                   */
@@ -50,6 +46,7 @@ export const useRewardStore = defineStore('rewards', () => {
         rewardPoints,
         getRewardPoints,
         calculateRewardPoints,
+        convertToRewardPoints,
         getPurchaseWithCard,
         getPurchaseWithCash,
         getPurchaseWithPoints

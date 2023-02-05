@@ -5,6 +5,7 @@ export const useCartStore = defineStore("cart", () => {
   /*                                    State                                   */
   /* -------------------------------------------------------------------------- */
   const cart = ref([]);
+  const previousPurchases = ref([])
   const price = ref(null);
   const selectedSize = ref(null);
   const selectedColor = ref(null);
@@ -13,8 +14,12 @@ export const useCartStore = defineStore("cart", () => {
   /*                                   Getter                                   */
   /* -------------------------------------------------------------------------- */
   const getCart = computed(() => {
-    const { id, price } = cart;
-    const modifiedCart = {};
+      return cart
+    const modifiedCart = {
+        price,
+        selectedColor,
+        selectedSize
+    };
     return modifiedCart;
   });
 
@@ -25,6 +30,9 @@ export const useCartStore = defineStore("cart", () => {
   const getSelectedColor = computed(() => selectedColor);
 
   const getSelectedSize = computed(() => selectedSize);
+
+
+  //TODO: Add previousPurchase to state and respective getters and actions
 
   // Action
   const addToCart = (item) => {
@@ -38,9 +46,11 @@ export const useCartStore = defineStore("cart", () => {
     }, 0);
   };
 
+
   return {
     cart,
     price,
+      previousPurchases,
     selectedColor,
     selectedSize,
     getCart,

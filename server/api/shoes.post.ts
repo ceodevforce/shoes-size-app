@@ -1,9 +1,33 @@
 import { createShoes } from "~/server/db/shoes";
-import {Shoes} from "~/types/types";
+import { Shoes } from "~/types/types";
+//import { Product } from "~/types/types-stripe";
 
 export default defineEventHandler(async (event) => {
+
     const body = await readBody(event)
-    const { title, size, details, productNumber, color, price, tag, rating} = body
+    const { title, size, details, productNumber, color, price, tag, rating, active, metadata, images, shippable } = body
+
+
+
+//    console.log(stripeObject)
+//
+//    const productInfo: Product = {
+//        name: title,
+//        description: details
+//        object: "product",
+//        active,
+//        created: Date.now(),
+//        livemode: false,
+//        metadata: {
+//            "size": size,
+//            "color": color,
+//            "tag": tag,
+//            "rating": rating,
+//            "productNumber": productNumber,
+//        },
+//        shippable
+//    }
+
 
    if (!title || !size || !details || !productNumber || !price || !tag || !rating) {
        return sendError(event, createError({
@@ -12,7 +36,7 @@ export default defineEventHandler(async (event) => {
        }))
    }
 
-   const shoesData: any = {
+   const shoesData: Shoes = {
        title,
        size,
        details,
@@ -25,7 +49,6 @@ export default defineEventHandler(async (event) => {
 
     const shoes = await createShoes(shoesData)
     return {
-        shoes
-        // cookies
+        shoes,
     }
 })

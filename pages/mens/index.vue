@@ -9,15 +9,14 @@ const store = useShoeStore();
 const storeUser = useUserStore();
 const storeCart = useCartStore();
 
-const { shoesFromData } = store.initialShoesData;
+const { shoesFromSupabase, shoeColor, ShoeSize } = store.initialShoesData;
 
 const { selectedSize, selectedColor, getSelectedColor, getSelectedSize } =
   store;
 
 const { cart, getCart } = storeCart;
 
-const filteredShoes = shoesFromData.filter((shoe) => {
-  console.log(shoe);
+const filteredShoes = shoesFromSupabase.filter((shoe) => {
   if (shoe.tag !== "Mens") {
     return "There are no tags located";
   }
