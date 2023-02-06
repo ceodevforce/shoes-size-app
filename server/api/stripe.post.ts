@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Session failed"
     }))
   }
-  sendRedirect(event, session.url, 303);
+  await sendRedirect(event, session.url, 303);
 
   return {
     session,

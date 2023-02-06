@@ -1,6 +1,7 @@
 import { createShoes } from "~/server/db/shoes";
 import { Shoes } from "~/types/types";
 //import { Product } from "~/types/types-stripe";
+import stripe from "stripe";
 
 export default defineEventHandler(async (event) => {
 
